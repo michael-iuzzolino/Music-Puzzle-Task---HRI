@@ -7,8 +7,13 @@ var USER_ANSWERS;
 var ANSWER_BUTTON_HEIGHT = 70;
 var ANSWER_BUTTON_WIDTH = 70;
 
+var PLAY_BUTTON_HOVER_COLOR = "#b3ffb3";
+var PAUSE_BUTTON_HOVER_COLOR = "#ff0000"
+
 var DROPDOWN_HOVER_COLOR = "#e6e6ff";
 var DROPDOWN_HOVER_BORDER_COLOR = "#8000ff";
+
+var NEXT_MELODY_BUTTON_HOVER_COLOR = "#00ff00";
 
 var current_selected_answer_box_num;
 
@@ -19,6 +24,12 @@ var ANSWER_BOX_Y = 500;
 var ANSWER_GROUP_X = 100;
 var ANSWER_GROUP_Y = 275;
 
+var CURRENT_MELODY_X = 500;
+var CURRENT_MELODY_Y = 150;
+
+var melody_paused;
+var melody_playing;
+var melody_interval;
 
 function gameOver() {
     alert("Game Over!");
@@ -46,6 +57,7 @@ function nextMelody(init=false) {
     if (init) {
         CURRENT_MELODY = {"number" : 0, "audio" : MELODIES[0].audio, "name" : "Melody 1", "size" : MELODIES[0].info.length};
         USER_ANSWERS = {};
+
     }
     else {
 
@@ -65,6 +77,9 @@ function nextMelody(init=false) {
     for (var i=0; i < CURRENT_MELODY.size; i++) {
         USER_ANSWERS[CURRENT_MELODY.name].push({"active" : false, "answer" : undefined, "correct" : false});
     }
+
+    melody_paused = false;
+    melody_playing = false;
 }
 
 
@@ -82,6 +97,14 @@ function initNextMelodyButton() {
         .attr("transform", "translate("+NEXT_MELODY_BUTTON_X+", "+NEXT_MELODY_BUTTON_Y+")")
         .style("cursor", "pointer")
         .style("opacity", 0.0)
+        .on("mouseover", function() {
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", NEXT_MELODY_BUTTON_HOVER_COLOR);
+        })
+        .on("mouseout", function() {
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", "white");
+        })
         .on("click", function() {
             nextMelody();
             refreshTaskScreen();
@@ -117,58 +140,110 @@ function initPauseButton() {
     // Select main svg
     var current_melody_g = d3.select("#current_melody_g");
 
-    // Init Play Button
-    // Add Play Button
-    var play_button_g = current_melody_g.append("g")
-        .attr("id", "play_button_g")
-        .attr("transform", "translate(15, 20)")
+    // Add Pause Button
+    var pause_button_g = current_melody_g.append("g")
+        .attr("id", "pause_button_g")
+        .attr("transform", "translate(125, 20)")
         .style("cursor", "pointer")
+        .on("mouseover", function() {
+            if (melody_paused) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", PAUSE_BUTTON_HOVER_COLOR)
+                .style("fill-opacity", 0.5);
+        })
+        .on("mouseout", function() {
+            if (melody_paused) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", "white")
+                .style("fill-opacity", 1.0);
+        })
         .on("click", function() {
 
-            CURRENT_MELODY.audio.play();
+            if (!melody_playing) {
+                d3.select(this).select("rect")
+                    .style("fill", "white")
+                    .style("fill-opacity", 1.0)
+                    .style("stroke", "black");
+                return;
+            }
 
-            d3.select(this).select("rect")
-                .style("fill", "#ccffdd")
-                .style("stroke", "#00ff00");
+            melody_paused = !melody_paused;
 
-            d3.select(this).select("text").transition().duration(600)
-                .attr("x", 20).transition().duration(800)
-                .text("Playing...");
+            if (melody_paused) {
+                CURRENT_MELODY.audio.pause();
 
-            d3.select(this).select("rect")
-                .transition().delay(8000).duration(1000)
-                .style("fill", "white")
-                .style("stroke", "black");
+                console.log("HERE");
+                // Update Pause Button
+                d3.select(this).select("rect")
+                    .style("fill", PAUSE_BUTTON_HOVER_COLOR)
+                    .style("fill-opacity", 0.5)
+                    .style("stroke", "#ff0000");
 
-            d3.select(this).select("text")
-                .transition().delay(8000).duration(1000)
-                .attr("x", 35)
-                .text("Play");
+                // Update Play Button
+                d3.select("#play_button_rect")
+                    .transition().duration(500)
+                    .style("fill", "#ff0000")
+                    .style("fill-opacity", 0.25)
+                    .style("stroke", "black");
+
+                d3.select("#play_button_text")
+                    .transition().duration(500)
+                    .attr("x", 20)
+                    .text("Paused...");
+
+            }
+            else {
+                CURRENT_MELODY.audio.play();
+
+                // Update Pause Button
+                d3.select(this).select("rect")
+                    .style("fill", "white")
+                    .style("fill-opacity", 1.0)
+                    .style("stroke", "black");
+
+                // Update Play Button
+                d3.select("#play_button_rect")
+                    .transition().duration(500)
+                    .style("fill", "#ccffdd")
+                    .style("fill-opacity", 1.0)
+                    .style("stroke", "#00ff00");
+
+                d3.select("#play_button_text")
+                    .transition().duration(500)
+                    .attr("x", 20)
+                    .text("Playing...");
+            }
         });
 
     // Button
-    play_button_g.append("rect")
-        .attr("id", "play_button_rect")
+    pause_button_g.append("rect")
+        .attr("id", "pause_button_rect")
         .attr("height", 30)
-        .attr("width", 100)
-        .attr("rx", 20)
-        .attr("ry", 20)
+        .attr("width", 30)
+        .attr("rx", 10)
+        .attr("ry", 10)
         .style("fill", "white")
         .style("stroke", "black");
 
 
     // Button text
-    play_button_g.append("text")
-        .attr("id", "play_button_text")
-        .attr("x", 35)
+    pause_button_g.append("text")
+        .attr("id", "pause_button_text")
+        .attr("x", 10)
         .attr("y", 20)
         .style("fill", "black")
-        .text("Play");
+        .text("| |");
 }
 
 
 
 function initPlayButton() {
+
+
     // Select main svg
     var current_melody_g = d3.select("#current_melody_g");
 
@@ -178,9 +253,47 @@ function initPlayButton() {
         .attr("id", "play_button_g")
         .attr("transform", "translate(15, 20)")
         .style("cursor", "pointer")
+        .on("mouseover", function() {
+            if (melody_playing) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", PLAY_BUTTON_HOVER_COLOR);
+        })
+        .on("mouseout", function() {
+            if (melody_playing) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", "white");
+        })
         .on("click", function() {
 
+            if (melody_playing) {
+                return;
+            }
+
+            melody_interval = setInterval(function() {
+                if (CURRENT_MELODY.audio.ended) {
+                    melody_playing = false;
+
+                    d3.select("#play_button_rect")
+                        .transition().delay(8000).duration(1000)
+                        .style("fill", "white")
+                        .style("stroke", "black");
+
+                    d3.select("#play_button_text")
+                        .transition().delay(8000).duration(1000)
+                        .attr("x", 35)
+                        .text("Play");
+
+                    clearInterval(melody_interval);
+
+                }
+            }, 500);
+
             CURRENT_MELODY.audio.play();
+            melody_playing = true;
 
             d3.select(this).select("rect")
                 .style("fill", "#ccffdd")
@@ -190,15 +303,7 @@ function initPlayButton() {
                 .attr("x", 20).transition().duration(800)
                 .text("Playing...");
 
-            d3.select(this).select("rect")
-                .transition().delay(8000).duration(1000)
-                .style("fill", "white")
-                .style("stroke", "black");
 
-            d3.select(this).select("text")
-                .transition().delay(8000).duration(1000)
-                .attr("x", 35)
-                .text("Play");
         });
 
     // Button
@@ -377,11 +482,12 @@ function initializeTask() {
 
     // Current Melody Label
     var current_melody_g = main_svg.append("g").attr("id", "current_melody_g")
-        .attr("transform", "translate(500, 150)");
+        .attr("transform", "translate("+CURRENT_MELODY_X+", "+CURRENT_MELODY_Y+")");
 
     // Melody Label text
     current_melody_g.append("text")
         .attr("id", "current_melody_g_text")
+        .attr("x", 20)
         .style("font-size", "36px")
         .text(function() {
             return CURRENT_MELODY.name;
