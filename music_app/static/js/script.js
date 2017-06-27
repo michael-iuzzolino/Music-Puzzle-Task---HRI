@@ -18,14 +18,14 @@ var NEXT_MELODY_BUTTON_HOVER_COLOR = "#00ff00";
 var current_selected_answer_box_num;
 
 var NEXT_MELODY_BUTTON_X = 0;
-var NEXT_MELODY_BUTTON_Y = 250;
+var NEXT_MELODY_BUTTON_Y = 350;
 var ANSWER_BOX_Y = 500;
 
 var ANSWER_GROUP_X = 100;
-var ANSWER_GROUP_Y = 275;
+var ANSWER_GROUP_Y = 200;
 
 var CURRENT_MELODY_X = 500;
-var CURRENT_MELODY_Y = 150;
+var CURRENT_MELODY_Y = 75;
 
 var melody_paused;
 var melody_playing;
@@ -335,7 +335,7 @@ function initAnswerFrame() {
 
     var answer_frame_g = main_svg.append("g").attr("id", "answer_frame_g")
         .attr("transform", function() {
-            var new_x = (MAIN_WIDTH - CURRENT_MELODY.size*(ANSWER_BUTTON_WIDTH + 20) - 20)/2.0;
+            var new_x = (MAIN_WIDTH - 10*(ANSWER_BUTTON_WIDTH + 20) - 20)/2.0 + 10;
             return "translate("+new_x+", "+ANSWER_GROUP_Y+")";
         });
 
@@ -344,6 +344,7 @@ function initAnswerFrame() {
     for (var i=0; i < CURRENT_MELODY.size; i++) {
         dummy_data.push(i);
     }
+    console.log(dummy_data);
 
     // ANSWER GROUPS
     var answers_g = answer_frame_g.selectAll("g.answers_g")
@@ -354,8 +355,15 @@ function initAnswerFrame() {
         })
         .attr("class", "answers_g")
         .attr("transform", function(d, i) {
-            var new_x = i*(ANSWER_BUTTON_WIDTH+20) + 10;
-            var new_y = 0;
+            if (i >= 10) {
+                var new_x = (i%10)*(ANSWER_BUTTON_WIDTH+20) + 10;
+                var new_y = ANSWER_BUTTON_HEIGHT+40;
+            }
+            else {
+                var new_x = i*(ANSWER_BUTTON_WIDTH+20) + 10;
+                var new_y = 0;
+            }
+
             return "translate("+new_x+","+new_y+")";
         })
         .style("cursor", "pointer")
