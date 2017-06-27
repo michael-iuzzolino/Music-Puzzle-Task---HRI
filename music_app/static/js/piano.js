@@ -15,6 +15,27 @@ var BLACK_KEY_HEIGHT = 100;
 
 var PIANO_SVG_Y = 500;
 
+function stopAudio(sound_element) {
+
+    // Fade out
+    var vol = 1.0;
+    var vol_count = 12;
+    var fadeout_interval = setInterval(function() {
+        vol -= 0.015;
+        if (vol_count === 0) {
+            sound_element.pause();
+            sound_element.currentTime = 0;
+            clearInterval(fadeout_interval);
+        }
+
+        sound_element.volume = vol;
+        vol_count--;
+    }, 50);
+
+
+}
+
+
 function placeAnswer(d) {
     for (var j=0; j < USER_ANSWERS[CURRENT_MELODY.name].length; j++) {
         if (USER_ANSWERS[CURRENT_MELODY.name][j].active) {
@@ -41,9 +62,9 @@ function placeAnswer(d) {
 
 function initializePianoBoard() {
 
-    var main_svg = d3.select("#main_svg");
+    var main_g = d3.select("#main_g");
 
-    var piano_g = main_svg.append("g").attr("id", "piano_g")
+    var piano_g = main_g.append("g").attr("id", "piano_g")
         .attr("transform", function() {
             var new_x = (MAIN_WIDTH - (white_keys.length*WHITE_KEY_WIDTH))/2.0;
             return "translate("+new_x+", "+PIANO_SVG_Y+")";
@@ -57,7 +78,14 @@ function initializePianoBoard() {
         .attr("class", "white_keys_g")
         .style("cursor", "pointer")
         .on("click", function(d, i) {
-            document.getElementById("audioElement_"+d).play();
+
+            var sound_element = document.getElementById("audioElement_"+d);
+
+            sound_element.play();
+
+            stopAudio(sound_element);
+
+
             d3.select(this).select("rect")
                 .style("fill", "blue")
                 .style("opacity", 0.4);
@@ -105,7 +133,9 @@ function initializePianoBoard() {
         .attr("class", "black_keys_g")
         .style("cursor", "pointer")
         .on("click", function(d, i) {
+
             document.getElementById("audioElement_"+d).play();
+
             d3.select(this).select("rect")
                 .style("fill", "#00ffff");
             d3.select(this).select("rect")

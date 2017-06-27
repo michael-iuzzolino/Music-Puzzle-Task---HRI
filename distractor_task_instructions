@@ -1,0 +1,7 @@
+You will be presented with a sequence of melodies. Your task will be to recreate each melody, one by one, and you will be scored for the total number of notes you have chosen correctly. You will have 5 minutes to complete as many melodies as you can.
+
+For each melody, you may playback the melody as many times as needed using the “Play” button. In addition, you may pause the melody using the “||” pause button. After the melody has played, you may use the piano at the bottom of the screen to find the correct notes; clicking on the piano keys will generate the key’s corresponding note.
+
+Notice the sequence of boxes mid-screen with “Note 1”, “Note 2”, etc. above each box. The note number corresponds to the note in the sequence of the melody. Clicking on a box will activate that box, indicated by the box being colored. To deactivate a box, click it again and its color will be removed. When the box is enabled, you may enter your choice for the corresponding note in the melody. To enter your choice, use the piano at the bottom of the screen.
+
+Once you have completed all of the notes in the melody, you will be prompted to go to the next melody. Click this prompt and repeat this process until the activity is completed. When 5 minutes has passed you score will be presented to you and automatically logged. You may close the application at this point.

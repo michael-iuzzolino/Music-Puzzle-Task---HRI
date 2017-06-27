@@ -8,7 +8,11 @@ var ANSWER_BUTTON_HEIGHT = 70;
 var ANSWER_BUTTON_WIDTH = 70;
 
 var PLAY_BUTTON_HOVER_COLOR = "#b3ffb3";
-var PAUSE_BUTTON_HOVER_COLOR = "#ff0000"
+var PAUSE_BUTTON_HOVER_COLOR = "#ff0000";
+
+var INSTRUCTIONS_BUTTON_CLICK_COLOR = "#b3ffb3";
+var INSTRUCTIONS_BUTTON_CLICK_BORDER_COLOR = "#00ff00";
+var SHOW_INSTRUCTIONS_BUTTON_HOVER_COLOR = "#e6e6ff";
 
 var DROPDOWN_HOVER_COLOR = "#e6e6ff";
 var DROPDOWN_HOVER_BORDER_COLOR = "#8000ff";
@@ -19,9 +23,7 @@ var current_selected_answer_box_num;
 
 var NEXT_MELODY_BUTTON_X = 0;
 var NEXT_MELODY_BUTTON_Y = 350;
-var ANSWER_BOX_Y = 500;
 
-var ANSWER_GROUP_X = 100;
 var ANSWER_GROUP_Y = 200;
 
 var CURRENT_MELODY_X = 500;
@@ -30,6 +32,8 @@ var CURRENT_MELODY_Y = 75;
 var melody_paused;
 var melody_playing;
 var melody_interval;
+
+var instructions_display;
 
 function gameOver() {
     alert("Game Over!");
@@ -42,7 +46,14 @@ function refreshTaskScreen() {
             return CURRENT_MELODY.name;
         });
 
-    initAnswerFrame();
+    d3.select("#answer_frame_g")
+        .transition().duration(1000).ease(d3.easeExp, 2)
+        .attr("transform", "translate(2000, "+ANSWER_GROUP_Y+")");
+
+    setTimeout(function(){
+        initAnswerFrame();
+    }, 1000);
+
 
     d3.select("#next_melody_button_g").transition().duration(1000).ease(d3.easeExp, 2)
         .attr("transform", "translate(2000, "+NEXT_MELODY_BUTTON_Y+")")
@@ -81,6 +92,65 @@ function nextMelody(init=false) {
     melody_paused = false;
     melody_playing = false;
 }
+
+
+
+function initShowInstructionsButton() {
+
+    d3.select("#show_instructions_button_g").remove();
+
+    // Select main svg
+    var main_svg = d3.select("#main_svg");
+
+    // Add show instructions Button
+    var show_instructions_button_g = main_svg.append("g")
+        .attr("id", "show_instructions_button_g")
+        .attr("transform", "translate("+(MAIN_WIDTH/2 - 100)+", "+10+")")
+        .style("cursor", "pointer")
+        .style("opacity", 0.0)
+        .on("mouseover", function() {
+            if (instructions_display) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", SHOW_INSTRUCTIONS_BUTTON_HOVER_COLOR);
+        })
+        .on("mouseout", function() {
+            if (instructions_display) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", "white");
+        })
+        .on("click", function() {
+            showInstructions();
+        });
+
+    // Button
+    show_instructions_button_g.append("rect")
+        .attr("id", "show_instructions_button_rect")
+        .attr("height", 30)
+        .attr("width", 160)
+        .attr("rx", 20)
+        .attr("ry", 20)
+        .style("fill", "white")
+        .style("stroke", "black");
+
+
+    // Button text
+    show_instructions_button_g.append("text")
+        .attr("id", "next_melody_button_text")
+        .attr("x", 24)
+        .attr("y", 20)
+        .style("fill", "black")
+        .text("Hide Instructions");
+
+    // Transition button
+    show_instructions_button_g.transition().duration(500)
+        .style("opacity", 1.0);
+
+}
+
 
 
 
@@ -176,7 +246,6 @@ function initPauseButton() {
             if (melody_paused) {
                 CURRENT_MELODY.audio.pause();
 
-                console.log("HERE");
                 // Update Pause Button
                 d3.select(this).select("rect")
                     .style("fill", PAUSE_BUTTON_HOVER_COLOR)
@@ -219,7 +288,7 @@ function initPauseButton() {
             }
         });
 
-    // Button
+    // Pause Button
     pause_button_g.append("rect")
         .attr("id", "pause_button_rect")
         .attr("height", 30)
@@ -230,7 +299,7 @@ function initPauseButton() {
         .style("stroke", "black");
 
 
-    // Button text
+    // Pause Button text
     pause_button_g.append("text")
         .attr("id", "pause_button_text")
         .attr("x", 10)
@@ -238,6 +307,7 @@ function initPauseButton() {
         .style("fill", "black")
         .text("| |");
 }
+
 
 
 
@@ -278,19 +348,19 @@ function initPlayButton() {
                     melody_playing = false;
 
                     d3.select("#play_button_rect")
-                        .transition().delay(8000).duration(1000)
+                        .transition().duration(1000)
                         .style("fill", "white")
                         .style("stroke", "black");
 
                     d3.select("#play_button_text")
-                        .transition().delay(8000).duration(1000)
+                        .transition().duration(1000)
                         .attr("x", 35)
                         .text("Play");
 
                     clearInterval(melody_interval);
 
                 }
-            }, 500);
+            }, 50);
 
             CURRENT_MELODY.audio.play();
             melody_playing = true;
@@ -306,7 +376,7 @@ function initPlayButton() {
 
         });
 
-    // Button
+    // Play Button
     play_button_g.append("rect")
         .attr("id", "play_button_rect")
         .attr("height", 30)
@@ -317,7 +387,7 @@ function initPlayButton() {
         .style("stroke", "black");
 
 
-    // Button text
+    // Play Button text
     play_button_g.append("text")
         .attr("id", "play_button_text")
         .attr("x", 35)
@@ -331,9 +401,17 @@ function initAnswerFrame() {
 
     d3.select("#answer_frame_g").remove();
 
-    var main_svg = d3.select("#main_svg");
+    var main_g = d3.select("#main_g");
 
-    var answer_frame_g = main_svg.append("g").attr("id", "answer_frame_g")
+    var answer_frame_g = main_g.append("g").attr("id", "answer_frame_g")
+        .attr("transform", function() {
+            var new_x = -2000;
+            return "translate("+new_x+", "+ANSWER_GROUP_Y+")";
+        });
+
+
+
+    answer_frame_g.transition().duration(1000).ease(d3.easeBack)
         .attr("transform", function() {
             var new_x = (MAIN_WIDTH - 10*(ANSWER_BUTTON_WIDTH + 20) - 20)/2.0 + 10;
             return "translate("+new_x+", "+ANSWER_GROUP_Y+")";
@@ -344,7 +422,6 @@ function initAnswerFrame() {
     for (var i=0; i < CURRENT_MELODY.size; i++) {
         dummy_data.push(i);
     }
-    console.log(dummy_data);
 
     // ANSWER GROUPS
     var answers_g = answer_frame_g.selectAll("g.answers_g")
@@ -486,10 +563,10 @@ function checkCurrentMelodyComplete() {
 function initializeTask() {
 
     // Select main svg
-    var main_svg = d3.select("#main_svg");
+    var main_g = d3.select("#main_g");
 
     // Current Melody Label
-    var current_melody_g = main_svg.append("g").attr("id", "current_melody_g")
+    var current_melody_g = main_g.append("g").attr("id", "current_melody_g")
         .attr("transform", "translate("+CURRENT_MELODY_X+", "+CURRENT_MELODY_Y+")");
 
     // Melody Label text
