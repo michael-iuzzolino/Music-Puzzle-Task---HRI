@@ -36,38 +36,85 @@ var melody_interval;
 
 var instructions_display;
 
+var busy_loading_next_melody;
+
+
 function gameOver() {
-    alert("Game Over!");
+    refreshTaskScreen(gameover=true);
+    var final_score = calculateFinalScore();
+    showFinalScore(final_score);
+
+    setTimeout(function() {
+        alert("You may now exit the application.");
+    }, 10000)
 }
 
-function refreshTaskScreen() {
-    d3.select("#current_melody_g").select("text")
-        .transition().duration(1000).ease(d3.easeExp, 2)
-        .text(function() {
-            return CURRENT_MELODY.name;
-        });
+function refreshTaskScreen(gameover=false) {
 
+    if (gameover) {
+
+        // Transition melody group off screen
+        d3.select("#current_melody_g").transition().duration(1000).ease(d3.easeExp, 2)
+            .attr("transform", "translate(2000, "+50+")");
+
+        // Remove melody group
+        setTimeout(function () {
+            d3.select("#current_melody_g").remove();
+        }, 1000);
+
+        // Transition instructions button off screen
+        d3.select("#show_instructions_button_g").transition().duration(1000).ease(d3.easeExp, 2)
+            .attr("transform", "translate(2000, "+50+")");
+
+        // Remove instructions button
+        setTimeout(function () {
+            d3.select("#show_instructions_button_g").remove();
+        }, 1000);
+
+        // Transition piano group off screen
+        d3.select("#piano_g").transition().duration(1000).ease(d3.easeExp, 2)
+            .attr("transform", "translate(2000, "+PIANO_SVG_Y+")");
+
+        // Remove piano group
+        setTimeout(function () {
+            d3.select("#piano_g").remove();
+        }, 1000);
+    }
+    else {
+        d3.select("#current_melody_g").select("text")
+            .transition().duration(1000).ease(d3.easeExp, 2)
+            .text(function () {
+                return CURRENT_MELODY.name;
+            });
+    }
+
+    // Transition answer frame off screen
     d3.select("#answer_frame_g")
         .transition().duration(1000).ease(d3.easeExp, 2)
         .attr("transform", "translate(2000, "+ANSWER_GROUP_Y+")");
 
-    setTimeout(function(){
-        initAnswerFrame();
-    }, 1000);
+    if (!gameover) {
+        setTimeout(function () {
+            initAnswerFrame();
+        }, 1000);
+    }
 
-
+    // Transition next melody button off of screen
     d3.select("#next_melody_button_g").transition().duration(1000).ease(d3.easeExp, 2)
         .attr("transform", "translate(2000, "+NEXT_MELODY_BUTTON_Y+")")
         .style("opacity", 0.0);
 
+    // Remove next melody button
     setTimeout(function() {
         d3.select("#next_melody_button_g").remove();
     }, 500);
 
+    // Transition score off of screen
     d3.select("#score_g").transition().duration(1000).ease(d3.easeExp, 2)
         .attr("transform", "translate(2000, "+50+")")
         .style("opacity", 0.0);
 
+    // Remove score
     setTimeout(function() {
         d3.select("#score_g").remove();
     }, 500);
@@ -90,6 +137,7 @@ function nextMelody(init=false) {
 
         if (next_melody_num >= TOTAL_MELODIES) {
             gameOver();
+            return;
         }
 
         var current_melody_num = next_melody_num;
@@ -106,6 +154,9 @@ function nextMelody(init=false) {
 
     melody_paused = false;
     melody_playing = false;
+
+
+    refreshTaskScreen();
 }
 
 
@@ -191,10 +242,14 @@ function initNextMelodyButton() {
                 .style("fill", "white");
         })
         .on("click", function() {
+            if (busy_loading_next_melody) {
+                return;
+            }
+
+            busy_loading_next_melody = true;
             showScore();
             setTimeout(function(){
                 nextMelody();
-                refreshTaskScreen();
             }, 2000);
 
         });
@@ -498,6 +553,8 @@ function initAnswerFrame() {
         .attr("y", 35)
         .style("font-size", "12px")
         .text("Select Note");
+
+    busy_loading_next_melody = false;
 }
 
 
@@ -522,6 +579,77 @@ function checkCurrentMelodyComplete(note) {
 
 }
 
+
+
+function calculateFinalScore() {
+
+    var total_num_correct = 0.0;
+    var total_num = 0.0;
+
+    console.log(USER_ANSWERS);
+    for (var i in USER_ANSWERS) {
+        var current = USER_ANSWERS[i];
+        total_num += current.length * 1.0;
+        for (var j=0; j < total_num; j++) {
+            if (current[j].correct) {
+                total_num_correct++;
+            }
+        }
+    }
+
+    return total_num_correct/total_num;
+}
+
+function showFinalScore(final_score) {
+    var score_box_height = 100;
+    var score_box_width = 250;
+
+    d3.select("#final_score_g").remove();
+
+    var final_score_g = d3.select("#main_svg").append("g").attr("id", "final_score_g")
+        .attr("transform", "translate(450, 0)").style("opacity", 0.0);
+
+    var score = final_score * 100;
+    var score_text = "Total Accuracy: " + score + "%";
+
+    // Get text width and height
+    var test_text_svg = d3.select("body").append("svg")
+        .attr("id", "test_text_svg")
+        .append("text")
+        .style("font-size", "26px")
+        .text(score_text);
+
+    var text_width = test_text_svg.node().getBBox().width;
+
+    d3.select("#test_text_svg").remove();
+
+    // Background
+    final_score_g.append("rect")
+        .attr("height", score_box_height)
+        .attr("width", score_box_width)
+        .attr("rx", 20)
+        .attr("ry", 20)
+        .style("fill", "#b3ffb3")
+        .style("stroke", "black");
+
+
+    // Text
+    final_score_g.append("text")
+        .attr("x", function() {
+            return (score_box_width - text_width)/2.0;
+        })
+        .attr("y", function() {
+            return score_box_height*0.6;
+        })
+        .style("fill", "black")
+        .style("font-size", "26px")
+        .text(score_text);
+
+    final_score_g.transition().duration(3000)
+        .attr("transform", "translate(450, 300)").style("opacity", 1.0);
+}
+
+
 function showScore() {
 
     var score_box_height = 100;
@@ -544,7 +672,6 @@ function showScore() {
         .text(score_text);
 
     var text_width = test_text_svg.node().getBBox().width;
-    var text_height = test_text_svg.node().getBBox().height;
 
     d3.select("#test_text_svg").remove();
 

@@ -2,9 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5241d58e-6837-43d7-b427-911917ff904a" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_10.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_2.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_3.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_4.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_5.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_6.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_7.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_8.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_9.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_10.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_7.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_8.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_9.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/initialize.js" afterPath="$PROJECT_DIR$/music_app/static/js/initialize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/piano.js" afterPath="$PROJECT_DIR$/music_app/static/js/piano.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/script.js" afterPath="$PROJECT_DIR$/music_app/static/js/script.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,8 +68,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+            <state relative-caret-position="312">
+              <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -91,14 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>playing..</find>
-      <find>Music Puzzle Activity</find>
-      <find>initializeMain</find>
-      <find>melody_playing</find>
-      <find>main_svg</find>
-      <find>instructions&quot;</find>
-      <find>show_instructions_button_g</find>
-      <find>&quot;playing..</find>
       <find>initPlayButton</find>
       <find>&quot;Melody</find>
       <find>CURRENT_MELODY.name</find>
@@ -112,15 +120,23 @@
       <find>calculate</find>
       <find>CURRENT</find>
       <find>scores</find>
-      <find>score</find>
       <find>checkCurrentMelodyComplete</find>
       <find>initNextMelodyButton</find>
       <find>initNext</find>
       <find>calculateScore</find>
       <find>USER_SCORES</find>
-      <find>showScore</find>
-      <find>nextMelody</find>
       <find>refreshTaskScreen</find>
+      <find>score</find>
+      <find>finalScore</find>
+      <find>showScore</find>
+      <find>gameOver</find>
+      <find>nextMelody</find>
+      <find>nextMelody(</find>
+      <find>&quot;next melody&quot;</find>
+      <find>busy_loading_next_melody</find>
+      <find>refresh</find>
+      <find>initAnswerFrame</find>
+      <find>showFinalScore</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -872,12 +888,12 @@
       <updated>1498519993157</updated>
       <workItem from="1498519994447" duration="19802000" />
       <workItem from="1498592284860" duration="6576000" />
-      <workItem from="1498665156654" duration="3864000" />
+      <workItem from="1498665156654" duration="5649000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30242000" />
+    <option name="totallyTimeSpent" value="32027000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1074,8 +1090,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="71" column="27" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+        <state relative-caret-position="312">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
           <folding />
         </state>
       </provider>
