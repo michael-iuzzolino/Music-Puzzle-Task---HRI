@@ -38,6 +38,61 @@ var instructions_display;
 
 var busy_loading_next_melody;
 
+var GAME_STARTED = false;
+
+
+
+function startActivityTimer() {
+    d3.select("#timer_g").remove();
+
+    var timer_g = d3.select("#main_svg").append("g").attr("id", "timer_g")
+        .attr("transform", "translate(900, 20)");
+
+
+    // Text
+    timer_g.append("text")
+        .attr("x", 20)
+        .attr("y", 20)
+        .style("fill", "black")
+        .style("font-size", "30px")
+        .text(function() {
+            var minutes = 5;
+            var seconds = 0;
+
+            return minutes + ":" + seconds + seconds;
+        });
+
+    var one_second = 1000;
+    var one_minute = 60 * one_second;
+    var five_minutes = 5 * one_minute;
+    var time_elapsed = 0;
+    var time_interval = 1000;
+
+    var timer_interval = setInterval(function() {
+        if (time_elapsed === five_minutes) {
+            clearInterval(timer_interval);
+            gameOver();
+        }
+
+        time_remaining = five_minutes - time_elapsed;
+
+        // Text
+        d3.select("#timer_g").select("text")
+            .text(function() {
+                var total_seconds = time_remaining / 1000;
+                var minutes = parseInt(total_seconds / 60);
+                var seconds = parseInt(total_seconds % 60);
+
+                seconds = (seconds === 0) ? "00" : seconds;
+
+                return minutes + ":" + seconds;
+            });
+
+        time_elapsed += time_interval;
+    }, time_interval);
+
+
+}
 
 function gameOver() {
     refreshTaskScreen(gameover=true);
@@ -46,7 +101,7 @@ function gameOver() {
 
     setTimeout(function() {
         alert("You may now exit the application.");
-    }, 10000)
+    }, 5000)
 }
 
 function refreshTaskScreen(gameover=false) {
@@ -119,6 +174,20 @@ function refreshTaskScreen(gameover=false) {
         d3.select("#score_g").remove();
     }, 500);
 
+
+    // Transition timer off of screen
+    d3.select("#timer_g").transition().duration(1000).ease(d3.easeExp, 2)
+        .attr("transform", "translate(2000, "+50+")")
+        .style("opacity", 0.0);
+
+    // Remove timer
+    setTimeout(function() {
+        d3.select("#timer_g").remove();
+    }, 500);
+
+
+
+
 }
 
 function nextMelody(init=false) {
@@ -161,61 +230,6 @@ function nextMelody(init=false) {
 
 
 
-function initShowInstructionsButton() {
-
-    d3.select("#show_instructions_button_g").remove();
-
-    // Select main svg
-    var main_svg = d3.select("#main_svg");
-
-    // Add show instructions Button
-    var show_instructions_button_g = main_svg.append("g")
-        .attr("id", "show_instructions_button_g")
-        .attr("transform", "translate("+(MAIN_WIDTH/2 - 100)+", "+10+")")
-        .style("cursor", "pointer")
-        .style("opacity", 0.0)
-        .on("mouseover", function() {
-            if (instructions_display) {
-                return;
-            }
-            d3.select(this).select("rect").transition().duration(600)
-                .style("fill", SHOW_INSTRUCTIONS_BUTTON_HOVER_COLOR);
-        })
-        .on("mouseout", function() {
-            if (instructions_display) {
-                return;
-            }
-            d3.select(this).select("rect").transition().duration(600)
-                .style("fill", "white");
-        })
-        .on("click", function() {
-            showInstructions();
-        });
-
-    // Button
-    show_instructions_button_g.append("rect")
-        .attr("id", "show_instructions_button_rect")
-        .attr("height", 30)
-        .attr("width", 160)
-        .attr("rx", 20)
-        .attr("ry", 20)
-        .style("fill", "white")
-        .style("stroke", "black");
-
-
-    // Button text
-    show_instructions_button_g.append("text")
-        .attr("id", "next_melody_button_text")
-        .attr("x", 24)
-        .attr("y", 20)
-        .style("fill", "black")
-        .text("Hide Instructions");
-
-    // Transition button
-    show_instructions_button_g.transition().duration(500)
-        .style("opacity", 1.0);
-
-}
 
 
 

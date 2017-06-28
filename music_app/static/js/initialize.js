@@ -72,6 +72,70 @@ function initializeInstructions() {
 
 
 
+function initShowInstructionsButton() {
+
+    d3.select("#show_instructions_button_g").remove();
+
+    // Select main svg
+    var main_svg = d3.select("#main_svg");
+
+    // Add show instructions Button
+    var show_instructions_button_g = main_svg.append("g")
+        .attr("id", "show_instructions_button_g")
+        .attr("transform", "translate("+(MAIN_WIDTH/2 - 100)+", "+10+")")
+        .style("cursor", "pointer")
+        .style("opacity", 0.0)
+        .on("mouseover", function() {
+            if (instructions_display) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", SHOW_INSTRUCTIONS_BUTTON_HOVER_COLOR);
+        })
+        .on("mouseout", function() {
+            if (instructions_display) {
+                return;
+            }
+            d3.select(this).select("rect").transition().duration(600)
+                .style("fill", "white");
+        })
+        .on("click", function() {
+            if (!GAME_STARTED) {
+                GAME_STARTED = true;
+                startActivityTimer();
+                d3.select("#next_melody_button_text").attr("x", 24);
+
+            }
+            showInstructions();
+        });
+
+    // Button
+    show_instructions_button_g.append("rect")
+        .attr("id", "show_instructions_button_rect")
+        .attr("height", 30)
+        .attr("width", 160)
+        .attr("rx", 20)
+        .attr("ry", 20)
+        .style("fill", "white")
+        .style("stroke", "black");
+
+
+    // Button text
+    show_instructions_button_g.append("text")
+        .attr("id", "next_melody_button_text")
+        .attr("x", 40)
+        .attr("y", 20)
+        .style("fill", "black")
+        .text("Start Activity");
+
+    // Transition button
+    show_instructions_button_g.transition().duration(500)
+        .style("opacity", 1.0);
+
+}
+
+
+
 
 function initializeMain() {
 
