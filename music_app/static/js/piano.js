@@ -36,26 +36,36 @@ function stopAudio(sound_element) {
 }
 
 
-function placeAnswer(d) {
+function placeAnswer(note) {
     for (var j=0; j < USER_ANSWERS[CURRENT_MELODY.name].length; j++) {
         if (USER_ANSWERS[CURRENT_MELODY.name][j].active) {
             var active_answer = j;
 
-            USER_ANSWERS[CURRENT_MELODY.name][j].answer = d;
+            USER_ANSWERS[CURRENT_MELODY.name][j].answer = note;
 
             var target_answer_box_id = "#answer_box_"+j;
 
-            var musical_note = (d.length === 2) ? d[0] : d[0]+"#";
-            var x_offset = (d.length === 2) ? 20 : 13;
+            var musical_note = (note.length === 2) ? note[0] : note[0]+"#";
+            var x_offset = (note.length === 2) ? 20 : 13;
 
             d3.select(target_answer_box_id)
                 .attr("x", x_offset)
                 .attr("y", 47)
                 .style("font-size", "40px")
                 .text(musical_note);
+
+            // Check if correct note:
+            var correct_note = CURRENT_MELODY.answers[j];
+            var user_note = (note.length === 2) ? note[0] : note[0] + "#";
+
+            if (correct_note === user_note) {
+                USER_ANSWERS[CURRENT_MELODY.name][j].correct = true;
+            }
+            else {
+                USER_ANSWERS[CURRENT_MELODY.name][j].correct = false;
+            }
         }
     }
-
     checkCurrentMelodyComplete();
 }
 

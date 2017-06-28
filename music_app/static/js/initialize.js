@@ -98,7 +98,6 @@ function loadMelodies() {
     $.ajax({
         url: "load_melodies",
         success: (function(melody_result) {
-
             MELODIES = melody_result;
             TOTAL_MELODIES = melody_result.length;
             for (var i=0; i < TOTAL_MELODIES; i++) {

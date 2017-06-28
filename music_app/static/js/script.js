@@ -3,6 +3,7 @@ var MELODIES;
 var TOTAL_MELODIES;
 
 var USER_ANSWERS;
+var USER_SCORES = [];
 
 var ANSWER_BUTTON_HEIGHT = 70;
 var ANSWER_BUTTON_WIDTH = 70;
@@ -62,13 +63,26 @@ function refreshTaskScreen() {
     setTimeout(function() {
         d3.select("#next_melody_button_g").remove();
     }, 500);
+
+    d3.select("#score_g").transition().duration(1000).ease(d3.easeExp, 2)
+        .attr("transform", "translate(2000, "+50+")")
+        .style("opacity", 0.0);
+
+    setTimeout(function() {
+        d3.select("#score_g").remove();
+    }, 500);
+
 }
 
 function nextMelody(init=false) {
     if (init) {
-        CURRENT_MELODY = {"number" : 0, "audio" : MELODIES[0].audio, "name" : "Melody 1", "size" : MELODIES[0].info.length};
+        CURRENT_MELODY = {"number" : 0,
+                          "audio" : MELODIES[0].audio,
+                          "name" : "Melody 1",
+                          "size" : MELODIES[0].info.length,
+                          "answers" : MELODIES[0].info};
         USER_ANSWERS = {};
-
+        USER_SCORES = {};
     }
     else {
 
@@ -82,6 +96,7 @@ function nextMelody(init=false) {
         CURRENT_MELODY.audio = MELODIES[current_melody_num].audio;
         CURRENT_MELODY.name = "Melody " + (current_melody_num+1);
         CURRENT_MELODY.size = MELODIES[current_melody_num].info.length;
+        CURRENT_MELODY.answers = MELODIES[current_melody_num].info;
     }
 
     USER_ANSWERS[CURRENT_MELODY.name] = [];
@@ -176,8 +191,12 @@ function initNextMelodyButton() {
                 .style("fill", "white");
         })
         .on("click", function() {
-            nextMelody();
-            refreshTaskScreen();
+            showScore();
+            setTimeout(function(){
+                nextMelody();
+                refreshTaskScreen();
+            }, 2000);
+
         });
 
     // Button
@@ -483,7 +502,7 @@ function initAnswerFrame() {
 
 
 
-function checkCurrentMelodyComplete() {
+function checkCurrentMelodyComplete(note) {
 
     var current_melody_notes = CURRENT_MELODY.size;
 
@@ -494,11 +513,76 @@ function checkCurrentMelodyComplete() {
         }
     }
 
-    var current_task_complete = (user_selected_notes === current_melody_notes) ? true : false;
+    var current_task_complete = (user_selected_notes === current_melody_notes);
 
     if (current_task_complete) {
+        calculateScore(note);
         initNextMelodyButton();
     }
+
+}
+
+function showScore() {
+
+    var score_box_height = 100;
+    var score_box_width = 250;
+
+    d3.select("#score_g").remove();
+
+
+    var score_g = d3.select("#main_svg").append("g").attr("id", "score_g")
+        .attr("transform", "translate(800, 50)");
+
+    var score = USER_SCORES[CURRENT_MELODY.name] * 100;
+    var score_text = "Accuracy: " + score + "%";
+
+    // Get text width and height
+    var test_text_svg = d3.select("body").append("svg")
+        .attr("id", "test_text_svg")
+        .append("text")
+        .style("font-size", "26px")
+        .text(score_text);
+
+    var text_width = test_text_svg.node().getBBox().width;
+    var text_height = test_text_svg.node().getBBox().height;
+
+    d3.select("#test_text_svg").remove();
+
+    // Background
+    score_g.append("rect")
+        .attr("height", score_box_height)
+        .attr("width", score_box_width)
+        .attr("rx", 20)
+        .attr("ry", 20)
+        .style("fill", "#b3ffb3")
+        .style("stroke", "black");
+
+
+    // Text
+    score_g.append("text")
+        .attr("x", function() {
+            return (score_box_width - text_width)/2.0;
+        })
+        .attr("y", function() {
+            return score_box_height*0.6;
+        })
+        .style("fill", "black")
+        .style("font-size", "26px")
+        .text(score_text);
+}
+
+function calculateScore(note) {
+    var current = USER_ANSWERS[CURRENT_MELODY.name];
+    var num_correct = 0;
+    var total_number = current.length * 1.0;
+    for (var i=0; i < total_number; i++) {
+        if (current[i].correct) {
+            num_correct++;
+        }
+    }
+    var accuracy = num_correct/total_number;
+
+    USER_SCORES[CURRENT_MELODY.name] = accuracy;
 }
 
 
