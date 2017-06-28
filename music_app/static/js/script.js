@@ -134,6 +134,16 @@ function refreshTaskScreen(gameover=false) {
         setTimeout(function () {
             d3.select("#piano_g").remove();
         }, 1000);
+
+        // Transition timer off of screen
+        d3.select("#timer_g").transition().duration(1000).ease(d3.easeExp, 2)
+            .attr("transform", "translate(2000, "+50+")")
+            .style("opacity", 0.0);
+
+        // Remove timer
+        setTimeout(function() {
+            d3.select("#timer_g").remove();
+        }, 500);
     }
     else {
         d3.select("#current_melody_g").select("text")
@@ -175,15 +185,7 @@ function refreshTaskScreen(gameover=false) {
     }, 500);
 
 
-    // Transition timer off of screen
-    d3.select("#timer_g").transition().duration(1000).ease(d3.easeExp, 2)
-        .attr("transform", "translate(2000, "+50+")")
-        .style("opacity", 0.0);
 
-    // Remove timer
-    setTimeout(function() {
-        d3.select("#timer_g").remove();
-    }, 500);
 
 
 
