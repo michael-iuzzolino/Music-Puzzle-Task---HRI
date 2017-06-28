@@ -1,1 +1,1 @@
-D,C#,F#,G#,A,G#,E,A,G#,A,G#,F#,E,F#
+A,D,F#

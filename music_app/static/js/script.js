@@ -206,173 +206,116 @@ function initNextMelodyButton() {
 }
 
 
-function initPauseButton() {
-    // Select main svg
-    var current_melody_g = d3.select("#current_melody_g");
-
-    // Add Pause Button
-    var pause_button_g = current_melody_g.append("g")
-        .attr("id", "pause_button_g")
-        .attr("transform", "translate(125, 20)")
-        .style("cursor", "pointer")
-        .on("mouseover", function() {
-            if (melody_paused) {
-                return;
-            }
-            d3.select(this).select("rect").transition().duration(600)
-                .style("fill", PAUSE_BUTTON_HOVER_COLOR)
-                .style("fill-opacity", 0.5);
-        })
-        .on("mouseout", function() {
-            if (melody_paused) {
-                return;
-            }
-            d3.select(this).select("rect").transition().duration(600)
-                .style("fill", "white")
-                .style("fill-opacity", 1.0);
-        })
-        .on("click", function() {
-
-            if (!melody_playing) {
-                d3.select(this).select("rect")
-                    .style("fill", "white")
-                    .style("fill-opacity", 1.0)
-                    .style("stroke", "black");
-                return;
-            }
-
-            melody_paused = !melody_paused;
-
-            if (melody_paused) {
-                CURRENT_MELODY.audio.pause();
-
-                // Update Pause Button
-                d3.select(this).select("rect")
-                    .style("fill", PAUSE_BUTTON_HOVER_COLOR)
-                    .style("fill-opacity", 0.5)
-                    .style("stroke", "#ff0000");
-
-                // Update Play Button
-                d3.select("#play_button_rect")
-                    .transition().duration(500)
-                    .style("fill", "#ff0000")
-                    .style("fill-opacity", 0.25)
-                    .style("stroke", "black");
-
-                d3.select("#play_button_text")
-                    .transition().duration(500)
-                    .attr("x", 20)
-                    .text("Paused...");
-
-            }
-            else {
-                CURRENT_MELODY.audio.play();
-
-                // Update Pause Button
-                d3.select(this).select("rect")
-                    .style("fill", "white")
-                    .style("fill-opacity", 1.0)
-                    .style("stroke", "black");
-
-                // Update Play Button
-                d3.select("#play_button_rect")
-                    .transition().duration(500)
-                    .style("fill", "#ccffdd")
-                    .style("fill-opacity", 1.0)
-                    .style("stroke", "#00ff00");
-
-                d3.select("#play_button_text")
-                    .transition().duration(500)
-                    .attr("x", 20)
-                    .text("Playing...");
-            }
-        });
-
-    // Pause Button
-    pause_button_g.append("rect")
-        .attr("id", "pause_button_rect")
-        .attr("height", 30)
-        .attr("width", 30)
-        .attr("rx", 10)
-        .attr("ry", 10)
-        .style("fill", "white")
-        .style("stroke", "black");
-
-
-    // Pause Button text
-    pause_button_g.append("text")
-        .attr("id", "pause_button_text")
-        .attr("x", 10)
-        .attr("y", 20)
-        .style("fill", "black")
-        .text("| |");
-}
-
-
 
 
 function initPlayButton() {
 
-
     // Select main svg
     var current_melody_g = d3.select("#current_melody_g");
 
-    // Init Play Button
     // Add Play Button
     var play_button_g = current_melody_g.append("g")
         .attr("id", "play_button_g")
         .attr("transform", "translate(15, 20)")
         .style("cursor", "pointer")
         .on("mouseover", function() {
-            if (melody_playing) {
+
+            if (melody_playing || melody_paused) {
                 return;
             }
-            d3.select(this).select("rect").transition().duration(600)
-                .style("fill", PLAY_BUTTON_HOVER_COLOR);
+            else {
+                d3.select(this).select("rect").transition().duration(600)
+                    .style("fill", PLAY_BUTTON_HOVER_COLOR);
+            }
         })
         .on("mouseout", function() {
-            if (melody_playing) {
+            if (melody_playing || melody_paused) {
                 return;
             }
-            d3.select(this).select("rect").transition().duration(600)
-                .style("fill", "white");
+            else {
+                d3.select(this).select("rect").transition().duration(600)
+                    .style("fill", "white");
+            }
         })
         .on("click", function() {
 
             if (melody_playing) {
-                return;
-            }
+                // Pause/Resume the playing
+                melody_paused = !melody_paused;
 
-            melody_interval = setInterval(function() {
-                if (CURRENT_MELODY.audio.ended) {
-                    melody_playing = false;
+                if (melody_paused) {
 
-                    d3.select("#play_button_rect")
-                        .transition().duration(1000)
-                        .style("fill", "white")
-                        .style("stroke", "black");
+                    // Pause the melody
+                    CURRENT_MELODY.audio.pause();
 
-                    d3.select("#play_button_text")
-                        .transition().duration(1000)
-                        .attr("x", 35)
-                        .text("Play");
+                    // Update Pause Button
+                    d3.select(this).select("rect")
+                        .style("fill", PAUSE_BUTTON_HOVER_COLOR)
+                        .style("fill-opacity", 0.5)
+                        .style("stroke", "#ff0000");
 
-                    clearInterval(melody_interval);
+
+                    d3.select(this).select("text")
+                        .transition().duration(500)
+                        .text("Paused ||");
 
                 }
-            }, 50);
+                else {
+                    // Resume the melody
+                    CURRENT_MELODY.audio.play();
 
-            CURRENT_MELODY.audio.play();
-            melody_playing = true;
+                    // Update Pause Button
+                    d3.select(this).select("rect")
+                        .style("fill", "white")
+                        .style("fill-opacity", 1.0)
+                        .style("stroke", "black");
 
-            d3.select(this).select("rect")
-                .style("fill", "#ccffdd")
-                .style("stroke", "#00ff00");
+                    // Update Play Button
+                    d3.select("#play_button_rect")
+                        .transition().duration(500)
+                        .style("fill", "#ccffdd")
+                        .style("fill-opacity", 1.0)
+                        .style("stroke", "#00ff00");
 
-            d3.select(this).select("text").transition().duration(600)
-                .attr("x", 20).transition().duration(800)
-                .text("Playing...");
+                    d3.select("#play_button_text")
+                        .transition().duration(500)
+                        .attr("x", 20)
+                        .text("Playing...");
+                }
+            }
+            else if (!melody_playing) {
+                // Start the melody
 
+                melody_interval = setInterval(function () {
+                    if (CURRENT_MELODY.audio.ended) {
+                        melody_playing = false;
+
+                        d3.select("#play_button_rect")
+                            .transition().duration(1000)
+                            .style("fill", "white")
+                            .style("stroke", "black");
+
+                        d3.select("#play_button_text")
+                            .transition().duration(1000)
+                            .attr("x", 35)
+                            .text("Play");
+
+                        clearInterval(melody_interval);
+
+                    }
+                }, 50);
+
+                CURRENT_MELODY.audio.play();
+                melody_playing = true;
+
+                d3.select(this).select("rect")
+                    .style("fill", "#ccffdd")
+                    .style("stroke", "#00ff00");
+
+                d3.select(this).select("text").transition().duration(600)
+                    .attr("x", 20).transition().duration(800)
+                    .text("Playing...");
+            }
 
         });
 
@@ -572,7 +515,6 @@ function initializeTask() {
     // Melody Label text
     current_melody_g.append("text")
         .attr("id", "current_melody_g_text")
-        .attr("x", 20)
         .style("font-size", "36px")
         .text(function() {
             return CURRENT_MELODY.name;
@@ -580,9 +522,6 @@ function initializeTask() {
 
     // Init Play Button
     initPlayButton();
-
-    // Init Pause Button
-    initPauseButton();
 
     // Init Answer Area
     initAnswerFrame();

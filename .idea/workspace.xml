@@ -2,12 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5241d58e-6837-43d7-b427-911917ff904a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/music_app/static/css/style.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_0.mp3" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_1.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_1.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_10.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_10.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_2.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_2.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_3.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_3.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_4.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_4.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_5.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_5.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_7.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_7.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_8.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_8.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_9.mp3" afterPath="$PROJECT_DIR$/music_app/static/data/audio_files/melodies/melody_9.mp3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/initialize.js" afterPath="$PROJECT_DIR$/music_app/static/js/initialize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/piano.js" afterPath="$PROJECT_DIR$/music_app/static/js/piano.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/distractor_task_instructions" afterPath="$PROJECT_DIR$/distractor_task_instructions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_1.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_10.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_10.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_2.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_3.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_3.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_4.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_4.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_5.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_5.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_6.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_6.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_7.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_7.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_8.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_8.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_9.txt" afterPath="$PROJECT_DIR$/music_app/static/data/melody_info/melody_9.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/script.js" afterPath="$PROJECT_DIR$/music_app/static/js/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/templates/index.html" afterPath="$PROJECT_DIR$/music_app/templates/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/music_app/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+              <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -32,7 +49,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/music_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="330">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -41,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initialize.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="initialize.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/music_app/static/js/initialize.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="18" column="39" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="1905">
+              <caret line="127" column="40" lean-forward="false" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -54,8 +71,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="107" column="53" lean-forward="false" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="59" />
+            <state relative-caret-position="425">
+              <caret line="517" column="0" lean-forward="false" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -71,10 +88,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="piano.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="piano.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/music_app/static/js/piano.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
+            <state relative-caret-position="180">
               <caret line="66" column="24" lean-forward="false" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
               <folding />
             </state>
@@ -93,11 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PIANO_SVG_Y</find>
-      <find>next_melody_button_g</find>
-      <find>BUTTON_HOVER_COLOR</find>
-      <find>PLAY_BUTTON_HOVER_COLOR</find>
-      <find>PAUSE_BUTTON_HOVER_COLOR</find>
       <find>melody_paused</find>
       <find>CURRENT_MELODY_X</find>
       <find>current_melody_g</find>
@@ -123,6 +135,11 @@
       <find>main_svg</find>
       <find>instructions&quot;</find>
       <find>show_instructions_button_g</find>
+      <find>&quot;playing..</find>
+      <find>initPlayButton</find>
+      <find>&quot;Melody</find>
+      <find>CURRENT_MELODY.name</find>
+      <find>current_melody_g_text</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,8 +159,8 @@
         <option value="$PROJECT_DIR$/music_app/templates/index.html" />
         <option value="$PROJECT_DIR$/music_app/static/js/piano.js" />
         <option value="$PROJECT_DIR$/music_app/static/css/style.css" />
-        <option value="$PROJECT_DIR$/music_app/static/js/script.js" />
         <option value="$PROJECT_DIR$/music_app/static/js/initialize.js" />
+        <option value="$PROJECT_DIR$/music_app/static/js/script.js" />
       </list>
     </option>
   </component>
@@ -154,8 +171,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="371" />
-    <option name="y" value="140" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="829" />
   </component>
@@ -174,7 +190,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -313,8 +330,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -874,15 +890,16 @@
       <option name="presentableId" value="Default" />
       <updated>1498519993157</updated>
       <workItem from="1498519994447" duration="19802000" />
-      <workItem from="1498592284860" duration="4558000" />
+      <workItem from="1498592284860" duration="6576000" />
+      <workItem from="1498665156654" duration="406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24360000" />
+    <option name="totallyTimeSpent" value="26784000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="371" y="140" width="1440" height="829" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="829" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -893,8 +910,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -905,8 +922,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -927,6 +944,48 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/music_app/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music_app/static/js/initialize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1905">
+          <caret line="127" column="40" lean-forward="false" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3735">
+          <caret line="249" column="0" lean-forward="true" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music_app/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/music_app/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -993,22 +1052,14 @@
     <entry file="file://$PROJECT_DIR$/music_app/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/music_app/static/js/piano.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="66" column="24" lean-forward="false" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+          <caret line="12" column="10" lean-forward="false" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/music_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="330">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
@@ -1024,18 +1075,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
+    <entry file="file://$PROJECT_DIR$/music_app/static/js/initialize.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="107" column="53" lean-forward="false" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="59" />
+        <state relative-caret-position="1905">
+          <caret line="127" column="40" lean-forward="false" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/music_app/static/js/initialize.js">
+    <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="18" column="39" lean-forward="false" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+        <state relative-caret-position="425">
+          <caret line="517" column="0" lean-forward="false" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music_app/static/js/piano.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="66" column="24" lean-forward="false" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
           <folding />
         </state>
       </provider>
