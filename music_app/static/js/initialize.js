@@ -172,7 +172,7 @@ function loadMelodies() {
 
             // Initialize current melody
             nextMelody(init=true);
-
+            initializeUserAnswers();
             initializeTask();
         })
     });

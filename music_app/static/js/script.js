@@ -8,6 +8,9 @@ var USER_SCORES;
 var ANSWER_BUTTON_HEIGHT = 70;
 var ANSWER_BUTTON_WIDTH = 70;
 
+var ACCURACY_BOX_X = 440;
+var ACCURACY_BOX_Y = 200;
+
 var PLAY_BUTTON_HOVER_COLOR = "#b3ffb3";
 var PAUSE_BUTTON_HOVER_COLOR = "#ff0000";
 
@@ -174,9 +177,10 @@ function refreshTaskScreen(gameover=false) {
         d3.select("#next_melody_button_g").remove();
     }, 500);
 
+
     // Transition score off of screen
     d3.select("#score_g").transition().duration(1000).ease(d3.easeExp, 2)
-        .attr("transform", "translate(2000, "+50+")")
+        .attr("transform", "translate(2000, "+ACCURACY_BOX_Y+")")
         .style("opacity", 0.0);
 
     // Remove score
@@ -199,8 +203,7 @@ function nextMelody(init=false) {
                           "name" : "Melody 1",
                           "size" : MELODIES[0].info.length,
                           "answers" : MELODIES[0].info};
-        USER_ANSWERS = {};
-        USER_SCORES = {};
+
     }
     else {
 
@@ -218,10 +221,7 @@ function nextMelody(init=false) {
         CURRENT_MELODY.answers = MELODIES[current_melody_num].info;
     }
 
-    USER_ANSWERS[CURRENT_MELODY.name] = [];
-    for (var i=0; i < CURRENT_MELODY.size; i++) {
-        USER_ANSWERS[CURRENT_MELODY.name].push({"active" : false, "answer" : undefined, "correct" : false});
-    }
+
 
     melody_paused = false;
     melody_playing = false;
@@ -230,6 +230,22 @@ function nextMelody(init=false) {
     refreshTaskScreen();
 }
 
+
+function initializeUserAnswers() {
+    USER_ANSWERS = {};
+    USER_SCORES = {};
+
+    for (var i=0; i < MELODIES.length; i++) {
+
+        current_melody_name = "Melody " + (i + 1);
+        current_melody_size = MELODIES[i].info.length;
+
+        USER_ANSWERS[current_melody_name] = [];
+        for (var j = 0; j < current_melody_size; j++) {
+            USER_ANSWERS[current_melody_name].push({"active": false, "answer": undefined, "correct": false});
+        }
+    }
+}
 
 
 
@@ -666,7 +682,7 @@ function showScore() {
 
 
     var score_g = d3.select("#main_svg").append("g").attr("id", "score_g")
-        .attr("transform", "translate(800, 50)");
+        .attr("transform", "translate(ACCURACY_BOX_X, ACCURACY_BOX_Y)");
 
     var score = USER_SCORES[CURRENT_MELODY.name] * 100;
     var score_text = "Accuracy: " + score.toFixed(2) + "%";
