@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5241d58e-6837-43d7-b427-911917ff904a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/initialize.js" afterPath="$PROJECT_DIR$/music_app/static/js/initialize.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/script.js" afterPath="$PROJECT_DIR$/music_app/static/js/script.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +49,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="226">
+              <caret line="182" column="60" lean-forward="false" selection-start-line="182" selection-start-column="46" selection-end-line="182" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -90,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>calculateScore</find>
-      <find>refreshTaskScreen</find>
       <find>finalScore</find>
       <find>showScore</find>
       <find>gameOver</find>
@@ -120,6 +116,8 @@
       <find>nextMelody(</find>
       <find>score_g</find>
       <find>&quot;score_g&quot;</find>
+      <find>ACCURACY_BOX_X</find>
+      <find>ACCURACY_BOX_Y</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -874,12 +872,12 @@
       <workItem from="1498665156654" duration="7211000" />
       <workItem from="1498714150753" duration="382000" />
       <workItem from="1498745788587" duration="7000" />
-      <workItem from="1499014517683" duration="4545000" />
+      <workItem from="1499014517683" duration="4658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38523000" />
+    <option name="totallyTimeSpent" value="38636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1226,8 +1224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="226">
+          <caret line="182" column="60" lean-forward="false" selection-start-line="182" selection-start-column="46" selection-end-line="182" selection-end-column="60" />
           <folding />
         </state>
       </provider>

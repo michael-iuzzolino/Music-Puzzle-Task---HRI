@@ -682,7 +682,7 @@ function showScore() {
 
 
     var score_g = d3.select("#main_svg").append("g").attr("id", "score_g")
-        .attr("transform", "translate(ACCURACY_BOX_X, ACCURACY_BOX_Y)");
+        .attr("transform", "translate("+ACCURACY_BOX_X+", "+ACCURACY_BOX_Y+")");
 
     var score = USER_SCORES[CURRENT_MELODY.name] * 100;
     var score_text = "Accuracy: " + score.toFixed(2) + "%";
