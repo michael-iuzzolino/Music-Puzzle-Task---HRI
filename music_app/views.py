@@ -23,7 +23,6 @@ def load_melodies():
 
     # Melody Audio Files
     melodies_path = os.path.join(os.getcwd(), "music_app/static/data/audio_files/melodies")
-    melody_audio_files = [audio_file for audio_file in os.listdir(melodies_path) if ".mp3" in audio_file]
 
     # Sort audio files
     melody_audio_files_sorted = sorted((audio_file for audio_file in os.listdir(melodies_path) if ".mp3" in audio_file), key=lambda n: int(re.findall(r'\d+', n)[0]))
@@ -32,7 +31,6 @@ def load_melodies():
     melodies_info_path = os.path.join(os.getcwd(), "music_app/static/data/melody_info")
     melodies_info_files = sorted((os.path.join(melodies_info_path, info_file) for info_file in os.listdir(melodies_info_path) if ".txt" in info_file), key=lambda n: int(re.findall(r'\d+', n)[-1]))
 
-    print(melody_audio_files_sorted)
 
     info_files = []
     for info_file in melodies_info_files:

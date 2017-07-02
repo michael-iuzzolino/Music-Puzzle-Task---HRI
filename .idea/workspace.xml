@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5241d58e-6837-43d7-b427-911917ff904a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/static/js/script.js" afterPath="$PROJECT_DIR$/music_app/static/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/music_app/views.py" afterPath="$PROJECT_DIR$/music_app/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/music_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="28" column="162" lean-forward="false" selection-start-line="28" selection-start-column="162" selection-end-line="28" selection-end-column="162" />
+            <state relative-caret-position="326">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -46,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/music_app/static/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="226">
@@ -104,7 +105,6 @@
       <find>accuracy</find>
       <find>seconds = (secon</find>
       <find>melody_audio_files_sorted</find>
-      <find>melody_audio_files</find>
       <find>score</find>
       <find>calculatefinal</find>
       <find>calculateFinalScore</find>
@@ -118,6 +118,7 @@
       <find>&quot;score_g&quot;</find>
       <find>ACCURACY_BOX_X</find>
       <find>ACCURACY_BOX_Y</find>
+      <find>melody_audio_files</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,9 +137,9 @@
         <option value="$PROJECT_DIR$/music_app/templates/index.html" />
         <option value="$PROJECT_DIR$/music_app/static/css/style.css" />
         <option value="$PROJECT_DIR$/music_app/static/js/piano.js" />
-        <option value="$PROJECT_DIR$/music_app/views.py" />
         <option value="$PROJECT_DIR$/music_app/static/js/initialize.js" />
         <option value="$PROJECT_DIR$/music_app/static/js/script.js" />
+        <option value="$PROJECT_DIR$/music_app/views.py" />
       </list>
     </option>
   </component>
@@ -872,12 +873,12 @@
       <workItem from="1498665156654" duration="7211000" />
       <workItem from="1498714150753" duration="382000" />
       <workItem from="1498745788587" duration="7000" />
-      <workItem from="1499014517683" duration="4658000" />
+      <workItem from="1499014517683" duration="5140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38636000" />
+    <option name="totallyTimeSpent" value="39118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1196,16 +1197,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/music_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="28" column="162" lean-forward="false" selection-start-line="28" selection-start-column="162" selection-end-line="28" selection-end-column="162" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/music_app/static/js/initialize.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -1227,6 +1218,16 @@
         <state relative-caret-position="226">
           <caret line="182" column="60" lean-forward="false" selection-start-line="182" selection-start-column="46" selection-end-line="182" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/music_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
