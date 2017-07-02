@@ -3,7 +3,7 @@ var MELODIES;
 var TOTAL_MELODIES;
 
 var USER_ANSWERS;
-var USER_SCORES = [];
+var USER_SCORES;
 
 var ANSWER_BUTTON_HEIGHT = 70;
 var ANSWER_BUTTON_WIDTH = 70;
@@ -83,7 +83,7 @@ function startActivityTimer() {
                 var minutes = parseInt(total_seconds / 60);
                 var seconds = parseInt(total_seconds % 60);
 
-                seconds = (seconds === 0) ? "00" : seconds;
+                seconds = (seconds === 0) ? "00" : (seconds < 10) ? "0" + seconds : seconds;
 
                 return minutes + ":" + seconds;
             });
@@ -502,7 +502,6 @@ function initAnswerFrame() {
 
             var active = USER_ANSWERS[CURRENT_MELODY.name][i].active;
             if (active) {
-                console.log("On");
                 current_selected_answer_box_num = i;
 
                 // Turn All Other Boxes OFF
@@ -524,7 +523,6 @@ function initAnswerFrame() {
                     .style("opactiy", 0.9);
             }
             else {
-                console.log("Off");
                 current_selected_answer_box_num = undefined;
 
                 d3.select(this).select("rect").transition()
@@ -599,26 +597,19 @@ function checkCurrentMelodyComplete(note) {
 
 function calculateFinalScore() {
 
-    var total_num_correct = 0.0;
+    var total_score_sum = 0.0;
     var total_num = 0.0;
-
-    console.log(USER_ANSWERS);
-    for (var i in USER_ANSWERS) {
-        var current = USER_ANSWERS[i];
-        total_num += current.length * 1.0;
-        for (var j=0; j < total_num; j++) {
-            if (current[j].correct) {
-                total_num_correct++;
-            }
-        }
+    for (var i in USER_SCORES) {
+        total_score_sum += USER_SCORES[i];
+        total_num++;
     }
 
-    return total_num_correct/total_num;
+    return total_score_sum/total_num;
 }
 
 function showFinalScore(final_score) {
     var score_box_height = 100;
-    var score_box_width = 250;
+    var score_box_width = 300;
 
     d3.select("#final_score_g").remove();
 
@@ -626,7 +617,7 @@ function showFinalScore(final_score) {
         .attr("transform", "translate(450, 0)").style("opacity", 0.0);
 
     var score = final_score * 100;
-    var score_text = "Total Accuracy: " + score + "%";
+    var score_text = "Total Accuracy: " + score.toFixed(2) + "%";
 
     // Get text width and height
     var test_text_svg = d3.select("body").append("svg")
@@ -678,7 +669,7 @@ function showScore() {
         .attr("transform", "translate(800, 50)");
 
     var score = USER_SCORES[CURRENT_MELODY.name] * 100;
-    var score_text = "Accuracy: " + score + "%";
+    var score_text = "Accuracy: " + score.toFixed(2) + "%";
 
     // Get text width and height
     var test_text_svg = d3.select("body").append("svg")
